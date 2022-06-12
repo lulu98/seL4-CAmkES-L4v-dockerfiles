@@ -44,6 +44,7 @@ DOCKER_FLAGS ?= --force-rm=true
 ifndef EXEC
 	EXEC := bash
 	DOCKER_RUN_FLAGS += -it
+	DOCKER_RUN_FLAGS += -d
 endif
 
 ETC_LOCALTIME := $(realpath /etc/localtime)
@@ -137,6 +138,7 @@ user_run:
 		-v $(HOST_DIR):/host:z \
 		-v $(DOCKER_VOLUME_HOME):/home/$(shell whoami) \
 		-v $(ETC_LOCALTIME):/etc/localtime:ro \
+		--name $(CONTAINER_NAME) \
 		$(USER_IMG) $(EXEC)
 
 .PHONY: user_run_l4v
