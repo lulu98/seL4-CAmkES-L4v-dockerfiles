@@ -20,4 +20,6 @@ RUN apt-get update -q \
     && apt-get install -y --no-install-recommends \
         # Add more dependencies here
         cowsay \
+        bison \
+        flex \
         sudo
